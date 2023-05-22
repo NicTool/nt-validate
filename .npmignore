@@ -1,0 +1,12 @@
+.github
+.DS_Store
+.editorconfig
+.gitignore
+.gitmodules
+.lgtm.yml
+appveyor.yml
+codecov.yml
+.release
+.travis.yml
+.eslintrc.yaml
+.eslintrc.json

@@ -1,5 +1,5 @@
 {
-  "name": "user",
+  "name": "@nictool/user",
   "version": "1.0.0",
   "description": "NicTool user",
   "main": "index.js",
