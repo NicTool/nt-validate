@@ -1,7 +1,6 @@
 const assert = require('node:assert/strict')
 
 const User = require('../index')
-const { it } = require('mocha')
 
 describe('user', function () {
   describe('new', function () {
@@ -13,23 +12,17 @@ describe('user', function () {
 
   describe('username', function () {
     it('rejects username too short ', () => {
-      try {
-        new User({ username: 'u' })
-        throw "Shouldn't have gotten here."
-      }
-      catch (e) {
-        assert.equal(e.message, 'Username must be at least 3 characters.')
-      }
+      assert.throws(
+        () => new User({ username: 'u' }),
+        { message: 'Username must be at least 3 characters.' }
+      )
     })
 
     it('rejects username too long', () => {
-      try {
-        new User({ username: 'abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyz' })
-        throw "Shouldn't have gotten here."
-      }
-      catch (e) {
-        assert.equal(e.message, 'Username cannot exceed 50 characters.')
-      }
+      assert.throws(
+        () => new User({ username: 'abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyz' }),
+        { message: 'Username cannot exceed 50 characters.' }
+      )
     })
   })
 

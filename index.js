@@ -7,16 +7,10 @@ class User {
   constructor (opts) {
     for (const f of publicFields) {
       if (opts[f] !== undefined) {
-        // console.log(`set${ucFirst(f)}: ${opts[f]}`)
         this[`set${ucFirst(f)}`](opts[f])
       }
     }
   }
-
-  // isValid () {
-  // 	for (const f of allFields) {
-  // 	}
-  // }
 
   setUsername (u) {
     if (u.length < 3) throw new Error('Username must be at least 3 characters.')
