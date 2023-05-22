@@ -1,0 +1,33 @@
+{
+  "name": "user",
+  "version": "1.0.0",
+  "description": "NicTool user",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npx mocha",
+    "lint": "npx eslint *.js test",
+    "lintfix": "npx eslint --fix *.js test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicTool/user.git"
+  },
+  "keywords": [
+    "nictool",
+    "dns",
+    "user"
+  ],
+  "author": "Matt Simerson <matt@tnpi.net>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/NicTool/user/issues"
+  },
+  "homepage": "https://github.com/NicTool/user#readme",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "mocha": "^10.2.0"
+  }
+}
