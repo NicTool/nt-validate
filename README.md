@@ -6,8 +6,6 @@ NicTool Object Validation
 
 Validation class for objects in NicTool. Analgous to Nictool/../\*/Sanity in v2.
 
-
-
 # Test
 
 ````
