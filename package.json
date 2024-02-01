@@ -7,9 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npx mocha",
-    "lint": "npx eslint *.js test",
-    "lintfix": "npx eslint --fix *.js test",
+    "lint": "npx eslint **/*.js",
+    "lint:fix": "npm run lint --fix",
+    "prettier": "npx prettier index.js lib test --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "test": "npx mocha test",
     "versions": "npx dependency-version-checker check"
   },
   "repository": {
@@ -30,7 +32,9 @@
   "homepage": "https://github.com/NicTool/nt-validate#readme",
   "devDependencies": {
     "eslint": "^8.56.0",
-    "mocha": "^10.2.0"
+    "eslint-config-prettier": "^9.1.0",
+    "mocha": "^10.2.0",
+    "prettier": "^3.2.4"
   },
   "dependencies": {
     "joi": "^17.12.1",

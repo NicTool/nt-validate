@@ -1,7 +1,6 @@
-
 const assert = require('node:assert/strict')
 
-const schema   = require('../lib/user').user
+const schema = require('../lib/user').user
 const testUser = require('./fixtures/user.json')
 
 describe('user', function () {
@@ -31,17 +30,24 @@ describe('user', function () {
 
       const { error, value } = schema.validate(testCase)
 
-      assert.strictEqual(error.message, '"username" length must be at least 3 characters long')
+      assert.strictEqual(
+        error.message,
+        '"username" length must be at least 3 characters long',
+      )
       assert.deepStrictEqual(testCase, value)
     })
 
     it('rejects too long', () => {
       const testCase = JSON.parse(JSON.stringify(testUser))
-      testCase.username = 'abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyz'
+      testCase.username =
+        'abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyz'
 
       const { error, value } = schema.validate(testCase)
 
-      assert.strictEqual(error.message, '"username" length must be less than or equal to 50 characters long')
+      assert.strictEqual(
+        error.message,
+        '"username" length must be less than or equal to 50 characters long',
+      )
       assert.deepStrictEqual(testCase, value)
     })
   })
@@ -105,12 +111,14 @@ describe('user', function () {
 
       const { error, value } = schema.validate(testCase)
 
-      assert.equal(error.message, '"password" length must be at least 8 characters long')
+      assert.equal(
+        error.message,
+        '"password" length must be at least 8 characters long',
+      )
       assert.deepStrictEqual(value, testCase)
     })
 
     it.skip('rejects password contains username', () => {
-
       const testCase = JSON.parse(JSON.stringify(testUser))
       testCase.password = 'bigLongPassWithmatt12!@'
 
