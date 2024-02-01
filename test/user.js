@@ -1,8 +1,6 @@
 
 const assert = require('node:assert/strict')
 
-const Joi    = require('joi')
-
 const schema   = require('../lib/user').user
 const testUser = require('./fixtures/user.json')
 
