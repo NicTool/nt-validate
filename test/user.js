@@ -1,8 +1,6 @@
 
 const assert = require('node:assert/strict')
 
-const Joi    = require('joi')
-
 const schema   = require('../lib/user').user
 const testUser = require('./fixtures/user.json')
 
@@ -76,6 +74,7 @@ describe('user', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"email" must be a valid email')
+      assert.deepStrictEqual(value, testCase)
     })
   })
 
@@ -97,7 +96,7 @@ describe('user', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.ifError(error)
-      assert.equal(value.password, 'This 1 Is Very 3#$@!in Good')
+      assert.deepStrictEqual(value, testCase)
     })
 
     it('rejects a short password', () => {
@@ -107,6 +106,7 @@ describe('user', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.equal(error.message, '"password" length must be at least 8 characters long')
+      assert.deepStrictEqual(value, testCase)
     })
 
     it.skip('rejects password contains username', () => {
@@ -117,6 +117,7 @@ describe('user', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.equal(error.message, '"password" cannot contain your username')
+      assert.deepStrictEqual(value, testCase)
     })
   })
 })

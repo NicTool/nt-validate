@@ -1,4 +1,4 @@
 
-for (const l of [ 'user',]) {
+for (const l of [ 'user' ]) {
   module.exports[l] = require(`./lib/${l}`)[l]
 }
