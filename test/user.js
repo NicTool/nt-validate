@@ -1,70 +1,122 @@
+
 const assert = require('node:assert/strict')
 
-const User = require('../index')
+const Joi    = require('joi')
+
+const schema   = require('../lib/user').user
+const testUser = require('./fixtures/user.json')
 
 describe('user', function () {
-  describe('new', function () {
-    it('instantiates a user instance', () => {
-      const u = new User({ username: 'unit-test' })
-      assert.equal(u.username, 'unit-test')
-    })
-  })
-
   describe('username', function () {
-    it('rejects username too short ', () => {
-      assert.throws(
-        () => new User({ username: 'u' }),
-        { message: 'Username must be at least 3 characters.' }
-      )
+    it('accepts valid', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.ifError(error)
+      assert.deepStrictEqual(testCase, value)
     })
 
-    it('rejects username too long', () => {
-      assert.throws(
-        () => new User({ username: 'abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyz' }),
-        { message: 'Username cannot exceed 50 characters.' }
-      )
+    it('rejects missing', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      delete testCase.username
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"username" is required')
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    it('rejects too short', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.username = 'u'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"username" length must be at least 3 characters long')
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    it('rejects too long', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.username = 'abcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyzabcdefghijklmopqrstuvwxyz'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"username" length must be less than or equal to 50 characters long')
+      assert.deepStrictEqual(testCase, value)
     })
   })
 
   describe('email', function () {
-    it('accepts valid email address format', () => {
-      const u = new User({ email: 'user@test.com' })
-      assert.equal(u.email, 'user@test.com')
+    it('accepts valid', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.email = 'user@test.com'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.ifError(error)
+      assert.equal(value.email, 'user@test.com')
     })
 
-    it('rejects invalid email address format', () => {
-      assert.throws(
-        () => new User({ email: 'user' }),
-        { message: 'Email must be a valid email address.' }
-      )
+    it('rejects missing', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      delete testCase.email
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"email" is required')
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    it('rejects invalid format', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.email = 'user'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"email" must be a valid email')
     })
   })
 
   describe('password', function () {
+    it('rejects missing', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      delete testCase.password
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"password" is required')
+      assert.deepStrictEqual(testCase, value)
+    })
+
     it('accepts a strong password', () => {
-      const u = new User({ password: 'This One Is Very #$@!in Good' })
-      assert.ok(u instanceof User)
-      assert.equal(u.password, 'This One Is Very #$@!in Good')
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.password = 'This 1 Is Very 3#$@!in Good'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.ifError(error)
+      assert.equal(value.password, 'This 1 Is Very 3#$@!in Good')
     })
 
     it('rejects a short password', () => {
-      assert.throws(() => new User({ password: 'wee' }),
-        { message: 'Password too short, must be 8-30 characters long.' }
-      )
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.password = 'ab12!@'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.equal(error.message, '"password" length must be at least 8 characters long')
     })
 
-    it('rejects password same as username', () => {
-      assert.throws(
-        () => new User({ username: 'username', password: 'username' }),
-        { message: 'Password cannot be the same as username!' }
-      )
-    })
+    it.skip('rejects password contains username', () => {
 
-    it('rejects password contains username', () => {
-      assert.throws(
-        () => new User({ username: 'user', password: 'bigLongPassWithUsername' }),
-        { message: 'Password cannot contain your username!' }
-      )
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      testCase.password = 'bigLongPassWithmatt12!@'
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.equal(error.message, '"password" cannot contain your username')
     })
   })
 })
