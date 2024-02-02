@@ -85,16 +85,6 @@ describe('user', function () {
   })
 
   describe('password', function () {
-    it('rejects missing', () => {
-      const testCase = JSON.parse(JSON.stringify(testUser))
-      delete testCase.password
-
-      const { error, value } = schema.validate(testCase)
-
-      assert.strictEqual(error.message, '"password" is required')
-      assert.deepStrictEqual(testCase, value)
-    })
-
     it('accepts a strong password', () => {
       const testCase = JSON.parse(JSON.stringify(testUser))
       testCase.password = 'This 1 Is Very 3#$@!in Good'
@@ -103,6 +93,16 @@ describe('user', function () {
 
       assert.ifError(error)
       assert.deepStrictEqual(value, testCase)
+    })
+
+    it('rejects missing', () => {
+      const testCase = JSON.parse(JSON.stringify(testUser))
+      delete testCase.password
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"password" is required')
+      assert.deepStrictEqual(testCase, value)
     })
 
     it('rejects a short password', () => {
