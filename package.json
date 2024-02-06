@@ -1,16 +1,18 @@
 {
   "name": "@nictool/nt-validate",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "description": "NicTool Object Validation",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "format:check": "npm run prettier; npm run lint",
+    "format": "npm run prettier -- --write && npm run lint --fix",
     "lint": "npx eslint **/*.js",
     "lint:fix": "npm run lint --fix",
-    "prettier": "npx prettier index.js lib test --check",
-    "prettier:fix": "npm run prettier -- --write",
+    "prettier": "npx prettier --ignore-path .gitignore --check .",
+    "prettier:fix": "npx prettier --ignore-path .gitignore --write .",
     "test": "npx mocha test",
     "versions": "npx dependency-version-checker check",
     "watch": "npm run test -- -w"

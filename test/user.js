@@ -50,6 +50,21 @@ describe('user', function () {
       )
       assert.deepStrictEqual(testCase, value)
     })
+
+    for (const char of `~\`!@$%^&*()+=[]\\/|?><"':;,#{}\n`.split('')) {
+      it(`rejects invalid character: ${char}`, () => {
+        const testCase = JSON.parse(JSON.stringify(testUser))
+        testCase.username = `user${char}name`
+
+        const { error, value } = schema.validate(testCase)
+
+        assert.strictEqual(
+          error.message,
+          `"username" with value "user${char}name" fails to match the required pattern: /^[a-zA-Z0-9 _.-]+$/`,
+        )
+        assert.deepStrictEqual(testCase, value)
+      })
+    }
   })
 
   describe('email', function () {
@@ -105,7 +120,7 @@ describe('user', function () {
       assert.deepStrictEqual(testCase, value)
     })
 
-    it('rejects a short password', () => {
+    it('rejects too short password', () => {
       const testCase = JSON.parse(JSON.stringify(testUser))
       testCase.password = 'ab12!@'
 
