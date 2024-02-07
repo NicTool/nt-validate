@@ -11,7 +11,6 @@ Validation class for objects in NicTool. Analgous to Nictool/../\*/Sanity in v2.
 ```
 > npm test
 
-
   group
     name
       ✔ accepts valid
@@ -45,7 +44,7 @@ Validation class for objects in NicTool. Analgous to Nictool/../\*/Sanity in v2.
       ✔ rejects invalid character: #
       ✔ rejects invalid character: {
       ✔ rejects invalid character: }
-      ✔ rejects invalid character: 
+      ✔ rejects invalid character:
 
       ✔ rejects if first character is not alphanumeric: -test
       ✔ rejects if first character is not alphanumeric: _test
@@ -142,8 +141,16 @@ d.com.
       ✔ rejects invalid: 1.2,3.4
       ✔ rejects invalid: 1.,.3.4
     ttl
+      ✔ rejects missing
+
+  shared
+    ttl
       ✔ accepts valid
       ✔ rejects missing
+      ✔ accepts valid: 0
+      ✔ accepts valid: 3600
+      ✔ accepts valid: 86401
+      ✔ accepts valid: 2147483647
       ✔ rejects invalid: -299
       ✔ rejects invalid: -2592001
       ✔ rejects invalid: -2
@@ -186,7 +193,7 @@ d.com.
       ✔ rejects invalid character: #
       ✔ rejects invalid character: {
       ✔ rejects invalid character: }
-      ✔ rejects invalid character: 
+      ✔ rejects invalid character:
 
     email
       ✔ accepts valid
@@ -198,7 +205,51 @@ d.com.
       ✔ rejects too short password
       ✔ rejects most common password strings
 
+  zone
+    zone
+      ✔ accepts valid
+      ✔ rejects empty
+      ✔ rejects invalid: thisis~atest.com.
+      ✔ rejects invalid: thisis`atest.com.
+      ✔ rejects invalid: thisis!atest.com.
+      ✔ rejects invalid: thisis@atest.com.
+      ✔ rejects invalid: thisis$atest.com.
+      ✔ rejects invalid: thisis%atest.com.
+      ✔ rejects invalid: thisis^atest.com.
+      ✔ rejects invalid: thisis&atest.com.
+      ✔ rejects invalid: thisis*atest.com.
+      ✔ rejects invalid: thisis(atest.com.
+      ✔ rejects invalid: thisis)atest.com.
+      ✔ rejects invalid: thisis+atest.com.
+      ✔ rejects invalid: thisis=atest.com.
+      ✔ rejects invalid: thisis[atest.com.
+      ✔ rejects invalid: thisis]atest.com.
+      ✔ rejects invalid: thisis\atest.com.
+      ✔ rejects invalid: thisis/atest.com.
+      ✔ rejects invalid: thisis|atest.com.
+      ✔ rejects invalid: thisis?atest.com.
+      ✔ rejects invalid: thisis>atest.com.
+      ✔ rejects invalid: thisis<atest.com.
+      ✔ rejects invalid: thisis"atest.com.
+      ✔ rejects invalid: thisis'atest.com.
+      ✔ rejects invalid: thisis:atest.com.
+      ✔ rejects invalid: thisis;atest.com.
+      ✔ rejects invalid: thisis,atest.com.
+      ✔ rejects invalid: thisis#atest.com.
+      ✔ rejects invalid: thisis{atest.com.
+      ✔ rejects invalid: thisis}atest.com.
+      ✔ rejects invalid: thisis atest.com.
+      ✔ rejects invalid: thisis
+atest.com.
+    nt_group_id
+      ✔ accepts valid: 1
+      ✔ rejects invalid:
+      ✔ rejects invalid: 0
+      ✔ rejects invalid: abc
+    ttl
+      ✔ rejects missing
 
-  168 passing (35ms)
+
+  211 passing (40ms)
 
 ```
