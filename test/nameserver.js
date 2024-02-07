@@ -229,15 +229,6 @@ describe('nameserver', function () {
   })
 
   describe('ttl', function () {
-    it(`accepts valid`, () => {
-      const testCase = JSON.parse(JSON.stringify(testNS))
-
-      const { error, value } = schema.validate(testCase)
-
-      assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
-    })
-
     it(`rejects missing`, () => {
       const testCase = JSON.parse(JSON.stringify(testNS))
       delete testCase.ttl
@@ -247,38 +238,5 @@ describe('nameserver', function () {
       assert.strictEqual(error.message, '"ttl" is required')
       assert.deepStrictEqual(testCase, value)
     })
-
-    for (const ttl of []) {
-      it(`accepts valid: ${ttl}`, () => {
-        const testCase = JSON.parse(JSON.stringify(testNS))
-        testCase.ttl = ttl
-
-        const { error, value } = schema.validate(testCase)
-
-        assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
-      })
-    }
-
-    const validErrs = [
-      '"ttl" must be greater than -1',
-      '"ttl" must be a number',
-      '"ttl" must be less than or equal to 2147483647',
-    ]
-
-    // Clarifications to the DNS specification: http://tools.ietf.org/html/rfc2181
-    // valid TTL is unsigned number from 0 to 2147483647
-
-    for (const ttl of [-299, -2592001, -2, -1, 2147483648, 'oops']) {
-      it(`rejects invalid: ${ttl}`, () => {
-        const testCase = JSON.parse(JSON.stringify(testNS))
-        testCase.ttl = ttl
-
-        const { error, value } = schema.validate(testCase)
-
-        assert.ok(validErrs.includes(error.message))
-        assert.deepStrictEqual(testCase, value)
-      })
-    }
   })
 })

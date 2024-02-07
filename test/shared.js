@@ -1,0 +1,38 @@
+const assert = require('node:assert/strict')
+
+const shared = require('../lib/shared')
+
+describe('shared', function () {
+
+  describe('ttl', function () {
+    it(`accepts valid`, () => {
+      const { error, value } = shared.ttl.validate(0)
+      assert.ifError(error)
+    })
+
+    it(`rejects missing`, () => {
+      const { error, value } = shared.ttl.validate('')
+      assert.strictEqual(error.message, '"value" must be a number')
+    })
+
+    for (const ttl of [0, 3600, 86401, 2147483647]) {
+      it(`accepts valid: ${ttl}`, () => {
+        const { error, value } = shared.ttl.validate(ttl)
+        assert.ifError(error)
+      })
+    }
+
+    const validErrs = [
+      '"value" must be greater than -1',
+      '"value" must be a number',
+      '"value" must be less than or equal to 2147483647',
+    ]
+
+    for (const ttl of [-299, -2592001, -2, -1, 2147483648, 'oops']) {
+      it(`rejects invalid: ${ttl}`, () => {
+        const { error, value } = shared.ttl.validate(ttl)
+        assert.ok(validErrs.includes(error.message))
+      })
+    }
+  })
+})
