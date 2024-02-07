@@ -1,6 +1,6 @@
 {
   "name": "@nictool/nt-validate",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "NicTool Object Validation",
   "main": "index.js",
   "directories": {
@@ -41,6 +41,6 @@
   },
   "dependencies": {
     "joi": "^17.12.1",
-    "joi-password": "^4.1.1"
+    "joi-password": "^4.2.0"
   }
 }

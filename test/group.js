@@ -69,7 +69,7 @@ describe('group', function () {
       })
     }
 
-    for (const t of [ '-test', '_test', `'test`, '.test', '@test' ]) {
+    for (const t of ['-test', '_test', `'test`, '.test', '@test']) {
       it(`rejects if first character is not alphanumeric: ${t}`, () => {
         const testCase = JSON.parse(JSON.stringify(testGroup))
         testCase.name = t

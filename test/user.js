@@ -133,13 +133,16 @@ describe('user', function () {
       assert.deepStrictEqual(value, testCase)
     })
 
-    it.skip('rejects password contains username', () => {
+    it('rejects most common password strings', () => {
       const testCase = JSON.parse(JSON.stringify(testUser))
-      testCase.password = 'bigLongPassWithmatt12!@'
+      testCase.password = 'bigLongpasswordWithabc12!@'
 
       const { error, value } = schema.validate(testCase)
 
-      assert.equal(error.message, '"password" cannot contain your username')
+      assert.equal(
+        error.message,
+        '"password" should not contain any of the following: password, abc',
+      )
       assert.deepStrictEqual(value, testCase)
     })
   })

@@ -53,6 +53,104 @@ Validation class for objects in NicTool. Analgous to Nictool/../\*/Sanity in v2.
       ✔ rejects if first character is not alphanumeric: .test
       ✔ rejects if first character is not alphanumeric: @test
 
+  nameserver
+    name
+      ✔ rejects missing
+      ✔ accepts valid: good-ns.tld.
+      ✔ accepts valid: a.b.c.
+      ✔ accepts valid: host.tld.
+      ✔ accepts valid: host.name.
+      ✔ accepts valid: valid-ns.sld.
+      ✔ accepts valid: wooki.tld.
+      ✔ rejects invalid: -bad_ns
+      ✔ rejects invalid: bad.-domain
+      ✔ rejects invalid: host
+      ✔ rejects invalid: bad_ns
+      ✔ rejects invalid: über
+      ✔ rejects invalid: ns..somewhere.com.
+      ✔ rejects invalid: ns.-something.com.
+      ✔ rejects invalid: a.b~d.com.
+      ✔ rejects invalid: a.b`d.com.
+      ✔ rejects invalid: a.b!d.com.
+      ✔ rejects invalid: a.b@d.com.
+      ✔ rejects invalid: a.b$d.com.
+      ✔ rejects invalid: a.b%d.com.
+      ✔ rejects invalid: a.b^d.com.
+      ✔ rejects invalid: a.b&d.com.
+      ✔ rejects invalid: a.b*d.com.
+      ✔ rejects invalid: a.b(d.com.
+      ✔ rejects invalid: a.b)d.com.
+      ✔ rejects invalid: a.b_d.com.
+      ✔ rejects invalid: a.b+d.com.
+      ✔ rejects invalid: a.b=d.com.
+      ✔ rejects invalid: a.b[d.com.
+      ✔ rejects invalid: a.b]d.com.
+      ✔ rejects invalid: a.b\d.com.
+      ✔ rejects invalid: a.b/d.com.
+      ✔ rejects invalid: a.b|d.com.
+      ✔ rejects invalid: a.b?d.com.
+      ✔ rejects invalid: a.b>d.com.
+      ✔ rejects invalid: a.b<d.com.
+      ✔ rejects invalid: a.b"d.com.
+      ✔ rejects invalid: a.b'd.com.
+      ✔ rejects invalid: a.b:d.com.
+      ✔ rejects invalid: a.b;d.com.
+      ✔ rejects invalid: a.b,d.com.
+      ✔ rejects invalid: a.b#d.com.
+      ✔ rejects invalid: a.b{d.com.
+      ✔ rejects invalid: a.b}d.com.
+      ✔ rejects invalid: a.b d.com.
+      ✔ rejects invalid: a.b
+d.com.
+    export_type
+      ✔ rejects missing
+      ✔ accepts valid: bind
+      ✔ accepts valid: djbdns
+      ✔ accepts valid: knot
+      ✔ accepts valid: nsd
+      ✔ accepts valid: maradns
+      ✔ accepts valid: powerdns
+      ✔ accepts valid: dynect
+      ✔ rejects invalid: cryptic
+      ✔ rejects invalid: fuzzy
+      ✔ rejects invalid: yitizg
+      ✔ rejects invalid: bin
+      ✔ rejects invalid: djbs
+      ✔ rejects invalid: DJB
+      ✔ rejects invalid: BIND
+      ✔ rejects invalid: NT
+    nt_group_id
+      ✔ accepts valid
+      ✔ rejects missing
+      ✔ accepts valid: 1
+      ✔ rejects invalid: abc
+    address
+      ✔ accepts valid
+      ✔ rejects missing
+      ✔ accepts valid: 1.2.3.4
+      ✔ rejects invalid: 1.x.2.3
+      ✔ rejects invalid: .1.2.3
+      ✔ rejects invalid: 1234.1.2.3
+      ✔ rejects invalid: 256.2.3.4
+      ✔ rejects invalid: 1.-.2.3
+      ✔ rejects invalid: 1.2.3
+      ✔ rejects invalid: 1.2
+      ✔ rejects invalid: 1
+      ✔ rejects invalid: 1.2.3.
+      ✔ rejects invalid: -1.2.3.4
+      ✔ rejects invalid: 1. .3.4
+      ✔ rejects invalid: 1.2,3.4
+      ✔ rejects invalid: 1.,.3.4
+    ttl
+      ✔ accepts valid
+      ✔ rejects missing
+      ✔ rejects invalid: -299
+      ✔ rejects invalid: -2592001
+      ✔ rejects invalid: -2
+      ✔ rejects invalid: -1
+      ✔ rejects invalid: 2147483648
+      ✔ rejects invalid: oops
+
   user
     username
       ✔ accepts valid
@@ -98,10 +196,9 @@ Validation class for objects in NicTool. Analgous to Nictool/../\*/Sanity in v2.
       ✔ accepts a strong password
       ✔ rejects missing
       ✔ rejects too short password
-      - rejects password contains username
+      ✔ rejects most common password strings
 
 
-  77 passing (17ms)
-  1 pending
+  168 passing (35ms)
 
 ```
