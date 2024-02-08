@@ -1,0 +1,124 @@
+const assert = require('node:assert/strict')
+
+const schema = require('../lib/zone_record').zone_record
+const testZR = require('./fixtures/zone_record.json')
+
+describe('zone_record', function () {
+  describe('nt_zone_id', function () {
+    it(`accepts valid`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      const { error, value } = schema.validate(testCase)
+      assert.ifError(error)
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    it(`rejects missing`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      delete testCase.nt_zone_id
+      const { error, value } = schema.validate(testCase)
+      assert.strictEqual(error.message, '"nt_zone_id" is required')
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    it(`rejects empty`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      testCase.nt_zone_id = ''
+      const { error, value } = schema.validate(testCase)
+      assert.strictEqual(error.message, '"nt_zone_id" must be a number')
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    const errMsgs = [
+      '"nt_zone_id" must be a positive number',
+      '"nt_zone_id" must be a number',
+    ]
+
+    for (const zid of ['abc', 0]) {
+      it(`rejects invalid: ${zid}`, () => {
+        const testCase = JSON.parse(JSON.stringify(testZR))
+        testCase.nt_zone_id = zid
+        const { error, value } = schema.validate(testCase)
+        assert.ok(errMsgs.includes(error.message))
+        assert.deepStrictEqual(testCase, value)
+      })
+    }
+  })
+
+  describe('name', function () {
+    it(`accepts valid`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      const { error, value } = schema.validate(testCase)
+      assert.ifError(error)
+      assert.deepStrictEqual(testCase, value)
+    })
+
+    it(`rejects missing`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      delete testCase.name
+      const { error } = schema.validate(testCase)
+      assert.strictEqual(error.message, '"name" is required')
+    })
+
+    it(`rejects empty`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      testCase.name = ''
+      const { error } = schema.validate(testCase)
+      assert.strictEqual(error.message, '"name" is not allowed to be empty')
+    })
+
+    for (const name of ['a.m.', 'something.test.']) {
+      it(`rejects invalid: ${name}`, () => {
+        const testCase = JSON.parse(JSON.stringify(testZR))
+        testCase.name = name
+        const { error } = schema.validate(testCase)
+        assert.deepStrictEqual(
+          error.message,
+          '"name" must contain a valid domain name',
+        )
+      })
+    }
+  })
+
+  describe('type', function () {
+    it(`rejects missing`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      delete testCase.type
+      const { error } = schema.validate(testCase)
+      assert.strictEqual(error.message, '"type" is required')
+    })
+
+    for (const type of ['A', 'AAAA', 'PTR']) {
+      it(`accepts valid: ${type}`, () => {
+        const testCase = JSON.parse(JSON.stringify(testZR))
+        testCase.type = type
+        const { error, value } = schema.validate(testCase)
+        assert.ifError(error)
+        assert.deepStrictEqual(testCase, value)
+      })
+    }
+
+    for (const type of ['', 0, 'abc']) {
+      it(`rejects invalid: ${type}`, () => {
+        const testCase = JSON.parse(JSON.stringify(testZR))
+        testCase.type = type
+        const { error } = schema.validate(testCase)
+        assert.deepStrictEqual(
+          error.message,
+          '"type" must be one of [A, AAAA, PTR, MX, NS, CNAME, SRV]',
+        )
+      })
+    }
+  })
+
+  describe('ttl', function () {
+    it(`rejects missing`, () => {
+      const testCase = JSON.parse(JSON.stringify(testZR))
+      delete testCase.ttl
+
+      const { error, value } = schema.validate(testCase)
+
+      assert.strictEqual(error.message, '"ttl" is required')
+      assert.deepStrictEqual(testCase, value)
+    })
+  })
+})

@@ -1,0 +1,7 @@
+{
+  "nt_zone_id": 1,
+  "name": "a",
+  "ttl": 86400,
+  "type": "A",
+  "address": "1.1.1.1"
+}

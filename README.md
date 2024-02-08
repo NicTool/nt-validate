@@ -249,7 +249,31 @@ atest.com.
     ttl
       ✔ rejects missing
 
+  zone_record
+    nt_zone_id
+      ✔ accepts valid
+      ✔ rejects missing
+      ✔ rejects empty
+      ✔ rejects invalid: abc
+      ✔ rejects invalid: 0
+    name
+      ✔ accepts valid
+      ✔ rejects missing
+      ✔ rejects empty
+      ✔ rejects invalid: a.m.
+      ✔ rejects invalid: something.test.
+    type
+      ✔ rejects missing
+      ✔ accepts valid: A
+      ✔ accepts valid: AAAA
+      ✔ accepts valid: PTR
+      ✔ rejects invalid:
+      ✔ rejects invalid: 0
+      ✔ rejects invalid: abc
+    ttl
+      ✔ rejects missing
 
-  211 passing (40ms)
+
+  229 passing (44ms)
 
 ```
