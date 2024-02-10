@@ -1,6 +1,6 @@
 {
   "name": "@nictool/nt-validate",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "NicTool Object Validation",
   "main": "index.js",
   "directories": {
