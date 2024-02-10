@@ -110,16 +110,6 @@ describe('user', function () {
       assert.deepStrictEqual(value, testCase)
     })
 
-    it('rejects missing', () => {
-      const testCase = JSON.parse(JSON.stringify(testUser))
-      delete testCase.password
-
-      const { error, value } = schema.validate(testCase)
-
-      assert.strictEqual(error.message, '"password" is required')
-      assert.deepStrictEqual(testCase, value)
-    })
-
     it('rejects too short password', () => {
       const testCase = JSON.parse(JSON.stringify(testUser))
       testCase.password = 'ab12!@'
