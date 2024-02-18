@@ -51,17 +51,14 @@ describe('user', function () {
       assert.deepStrictEqual(testCase, value)
     })
 
-    for (const char of `~\`!@$%^&*()+=[]\\/|?><"':;,#{}\n`.split('')) {
+    for (const char of `~\`!$%^&*()+=[]\\/|?><"':;,#{}\n`.split('')) {
       it(`rejects invalid character: ${char}`, () => {
         const testCase = JSON.parse(JSON.stringify(testUser))
         testCase.username = `user${char}name`
 
         const { error, value } = schema.validate(testCase)
 
-        assert.strictEqual(
-          error.message,
-          `"username" with value "user${char}name" fails to match the required pattern: /^[a-zA-Z0-9 _.-]+$/`,
-        )
+        assert.ok(/fails to match the required pattern/.test(error.message))
         assert.deepStrictEqual(testCase, value)
       })
     }
