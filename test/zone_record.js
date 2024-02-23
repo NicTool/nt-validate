@@ -1,7 +1,8 @@
 const assert = require('node:assert/strict')
+const { describe, it } = require('node:test')
 
 const schema = require('../lib/zone_record').zone_record
-const testZR = require('./fixtures/zone_record.json')
+const testZR = require('./fixtures/v2/zone_record.json')
 
 describe('zone_record', function () {
   describe('nt_zone_id', function () {
@@ -9,7 +10,7 @@ describe('zone_record', function () {
       const testCase = JSON.parse(JSON.stringify(testZR))
       const { error, value } = schema.validate(testCase)
       assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it(`rejects missing`, () => {
@@ -17,7 +18,7 @@ describe('zone_record', function () {
       delete testCase.nt_zone_id
       const { error, value } = schema.validate(testCase)
       assert.strictEqual(error.message, '"nt_zone_id" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it(`rejects empty`, () => {
@@ -25,7 +26,7 @@ describe('zone_record', function () {
       testCase.nt_zone_id = ''
       const { error, value } = schema.validate(testCase)
       assert.strictEqual(error.message, '"nt_zone_id" must be a number')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     const errMsgs = [
@@ -39,7 +40,7 @@ describe('zone_record', function () {
         testCase.nt_zone_id = zid
         const { error, value } = schema.validate(testCase)
         assert.ok(errMsgs.includes(error.message))
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -49,7 +50,7 @@ describe('zone_record', function () {
       const testCase = JSON.parse(JSON.stringify(testZR))
       const { error, value } = schema.validate(testCase)
       assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it(`rejects missing`, () => {
@@ -71,7 +72,7 @@ describe('zone_record', function () {
         const testCase = JSON.parse(JSON.stringify(testZR))
         testCase.name = name
         const { error } = schema.validate(testCase)
-        assert.deepStrictEqual(
+        assert.deepEqual(
           error.message,
           '"name" must contain a valid domain name',
         )
@@ -93,7 +94,7 @@ describe('zone_record', function () {
         testCase.type = type
         const { error, value } = schema.validate(testCase)
         assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -102,7 +103,7 @@ describe('zone_record', function () {
         const testCase = JSON.parse(JSON.stringify(testZR))
         testCase.type = type
         const { error } = schema.validate(testCase)
-        assert.deepStrictEqual(
+        assert.deepEqual(
           error.message,
           '"type" must be one of [A, AAAA, PTR, MX, NS, CNAME, SRV]',
         )
@@ -118,7 +119,7 @@ describe('zone_record', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"ttl" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
   })
 })

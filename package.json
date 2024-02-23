@@ -1,6 +1,6 @@
 {
-  "name": "@nictool/nt-validate",
-  "version": "0.6.1",
+  "name": "@nictool/validate",
+  "version": "0.6.3",
   "description": "NicTool Object Validation",
   "main": "index.js",
   "directories": {
@@ -13,13 +13,13 @@
     "lint:fix": "npm run lint --fix",
     "prettier": "npx prettier --ignore-path .gitignore --check .",
     "prettier:fix": "npx prettier --ignore-path .gitignore --write .",
-    "test": "npx mocha test",
+    "test": "test/run.sh",
     "versions": "npx dependency-version-checker check",
     "watch": "npm run test -- -w"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NicTool/nt-validate.git"
+    "url": "git+https://github.com/NicTool/validate.git"
   },
   "keywords": [
     "nictool",
@@ -30,17 +30,15 @@
   "author": "Matt Simerson <matt@tnpi.net>",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/NicTool/nt-validate/issues"
+    "url": "https://github.com/NicTool/validate/issues"
   },
-  "homepage": "https://github.com/NicTool/nt-validate#readme",
+  "homepage": "https://github.com/NicTool/validate#readme",
   "devDependencies": {
     "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "mocha": "^10.2.0",
-    "prettier": "^3.2.4"
+    "eslint-config-prettier": "^9.1.0"
   },
   "dependencies": {
-    "joi": "^17.12.1",
+    "joi": "^17.12.2",
     "joi-password": "^4.2.0"
   }
 }

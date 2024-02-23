@@ -1,7 +1,8 @@
 const assert = require('node:assert/strict')
+const { describe, it } = require('node:test')
 
 const schema = require('../lib/zone').zone
-const testZone = require('./fixtures/zone.json')
+const testZone = require('./fixtures/v2/zone.json')
 
 describe('zone', function () {
   describe('zone', function () {
@@ -11,7 +12,7 @@ describe('zone', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it(`rejects empty`, () => {
@@ -21,7 +22,7 @@ describe('zone', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"zone" is not allowed to be empty')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     const invalid_chars = `~\`!@$%^&*()+=[]\\/|?><"':;,#{} \n`
@@ -40,7 +41,7 @@ describe('zone', function () {
           error.message,
           '"zone" must contain a valid domain name',
         )
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -54,7 +55,7 @@ describe('zone', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -70,7 +71,7 @@ describe('zone', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ok(errMsgs.includes(error.message))
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -83,7 +84,7 @@ describe('zone', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"ttl" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
   })
 })

@@ -1,7 +1,8 @@
 const assert = require('node:assert/strict')
+const { describe, it } = require('node:test')
 
 const schema = require('../lib/nameserver').nameserver
-const testNS = require('./fixtures/nameserver.json')
+const testNS = require('./fixtures/v2/nameserver.json')
 
 describe('nameserver', function () {
   describe('name', function () {
@@ -12,7 +13,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"name" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     for (const n of [
@@ -30,7 +31,7 @@ describe('nameserver', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -60,7 +61,7 @@ describe('nameserver', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ok(errMsgs.includes(error.message))
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -73,7 +74,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"export_type" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     for (const n of [
@@ -92,7 +93,7 @@ describe('nameserver', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -116,7 +117,7 @@ describe('nameserver', function () {
           error.message,
           '"export_type" must be one of [bind, djbdns, knot, nsd, maradns, powerdns, dynect]',
         )
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -128,7 +129,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it(`rejects missing`, () => {
@@ -138,7 +139,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"nt_group_id" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     for (const gid of [1]) {
@@ -149,7 +150,7 @@ describe('nameserver', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -161,7 +162,7 @@ describe('nameserver', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.strictEqual(error.message, '"nt_group_id" must be a number')
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -173,7 +174,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it(`rejects missing`, () => {
@@ -183,7 +184,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"address" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     for (const gid of ['1.2.3.4']) {
@@ -194,7 +195,7 @@ describe('nameserver', function () {
         const { error, value } = schema.validate(testCase)
 
         assert.ifError(error)
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -223,7 +224,7 @@ describe('nameserver', function () {
           error.message,
           '"address" must be a valid ip address of one of the following versions [ipv4] with a forbidden CIDR',
         )
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })
@@ -236,7 +237,7 @@ describe('nameserver', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"ttl" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
   })
 })
