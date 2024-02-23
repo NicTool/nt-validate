@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint --fix",
     "prettier": "npx prettier --ignore-path .gitignore --check .",
     "prettier:fix": "npx prettier --ignore-path .gitignore --write .",
-    "test": "node --test test/*.js",
+    "test": "test/run.sh",
     "versions": "npx dependency-version-checker check",
     "watch": "npm run test -- -w"
   },
