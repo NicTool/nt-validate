@@ -2,7 +2,6 @@
 
 ### Unreleased
 
-
 ### [0.6.3] - 2024-02-23
 
 - replace mocha with node's test runner
@@ -14,6 +13,5 @@
 - feat(nameserver): added NS validation
 - feat: import user & group tests from v2
 - add group & permission
-
 
 [0.6.3]: https://github.com/NicTool/validate/releases/tag/0.6.3

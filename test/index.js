@@ -24,7 +24,7 @@ describe('index', function () {
 
   it('exports nameserver', () => {
     const testCase = JSON.parse(JSON.stringify(testNs))
-    const { error, value } = schema.nameserver.nameserver.validate(testCase)
+    const { error } = schema.nameserver.nameserver.validate(testCase)
     assert.ifError(error)
   })
 })

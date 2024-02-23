@@ -60,9 +60,11 @@ describe('user', function () {
 
       const { error, value } = schema.username.validate(username)
 
-      assert.ok(/length must be less than or equal to 50 characters long/.test(
-        error.message
-      ))
+      assert.ok(
+        /length must be less than or equal to 50 characters long/.test(
+          error.message,
+        ),
+      )
       assert.deepEqual(value, username)
     })
 
@@ -125,22 +127,22 @@ describe('user', function () {
 
   describe('sessionIn', function () {
     it('accepts valid', () => {
-      const { error, value } = schema.sessionIn.validate({
+      const { error } = schema.sessionIn.validate({
         username: 'valid',
-        password: 'ab12CD#%alph'
+        password: 'ab12CD#%alph',
       })
       assert.ifError(error)
     })
 
     it('rejects missing username', () => {
-      const { error, value } = schema.sessionIn.validate({
-        password: 'ab12CD#%alph'
+      const { error } = schema.sessionIn.validate({
+        password: 'ab12CD#%alph',
       })
       assert.strictEqual(error.message, '"username" is required')
     })
 
     it('rejects missing password', () => {
-      const { error, value } = schema.sessionIn.validate({
+      const { error } = schema.sessionIn.validate({
         username: 'valid',
       })
       assert.strictEqual(error.message, '"password" is required')
