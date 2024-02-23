@@ -1,7 +1,8 @@
 const assert = require('node:assert/strict')
+const { describe, it } = require('node:test')
 
-const schema = require('../lib/group').group
-const testGroup = require('./fixtures/group.json')
+const schema = require('../lib/group').v2
+const testGroup = require('./fixtures/v2/group.json')
 
 describe('group', function () {
   describe('name', function () {
@@ -11,7 +12,7 @@ describe('group', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.ifError(error)
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it('rejects missing name', () => {
@@ -21,7 +22,7 @@ describe('group', function () {
       const { error, value } = schema.validate(testCase)
 
       assert.strictEqual(error.message, '"name" is required')
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it('rejects too short', () => {
@@ -34,7 +35,7 @@ describe('group', function () {
         error.message,
         '"name" length must be at least 3 characters long',
       )
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     it('rejects too long', () => {
@@ -51,7 +52,7 @@ describe('group', function () {
         error.message,
         '"name" length must be less than or equal to 255 characters long',
       )
-      assert.deepStrictEqual(testCase, value)
+      assert.deepEqual(value, testCase)
     })
 
     for (const char of `~\`!$%^&*()+=[]\\/|?><":;,#{}\n`.split('')) {
@@ -65,7 +66,7 @@ describe('group', function () {
           error.message,
           `"name" with value "na${char}me" fails to match the required pattern: /^[a-zA-Z0-9 _.@'-]+$/`,
         )
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
 
@@ -80,7 +81,7 @@ describe('group', function () {
           error.message,
           `"name" with value "${t}" fails to match the required pattern: /^[a-zA-Z0-9]/`,
         )
-        assert.deepStrictEqual(testCase, value)
+        assert.deepEqual(value, testCase)
       })
     }
   })

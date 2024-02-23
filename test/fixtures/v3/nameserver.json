@@ -1,0 +1,9 @@
+{
+  "id": 3,
+  "gid": 1,
+  "name": "ns.tld.",
+  "address": "1.2.3.4",
+  "export_type": "djbdns",
+  "ttl": 3600,
+  "deleted": false
+}
