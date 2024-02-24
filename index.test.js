@@ -1,12 +1,12 @@
 const assert = require('node:assert/strict')
 const { describe, it } = require('node:test')
 
-const schema = require('../index')
+const schema = require('./index')
 
 describe('index', function () {
-  const testGroup = require('./fixtures/v2/group.json')
-  const testUser = require('./fixtures/v2/user.json')
-  const testNs = require('./fixtures/v2/nameserver.json')
+  const testGroup = require('./test/fixtures/v2/group.json')
+  const testUser = require('./test/fixtures/v2/user.json')
+  const testNs = require('./test/fixtures/v2/nameserver.json')
 
   it('exports user', () => {
     const testCase = JSON.parse(JSON.stringify(testUser))
