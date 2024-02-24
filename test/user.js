@@ -9,9 +9,7 @@ describe('user', function () {
   describe('v2', function () {
     it('accepts valid', () => {
       const testCase = JSON.parse(JSON.stringify(userV2))
-
       const { error, value } = schema.v2.validate(testCase)
-
       assert.ifError(error)
       assert.deepEqual(value, testCase)
     })
@@ -19,9 +17,7 @@ describe('user', function () {
     it('rejects missing username', () => {
       const testCase = JSON.parse(JSON.stringify(userV2))
       delete testCase.username
-
       const { error, value } = schema.v2.validate(testCase)
-
       assert.strictEqual(error.message, '"username" is required')
       assert.deepEqual(value, testCase)
     })
@@ -125,9 +121,9 @@ describe('user', function () {
     })
   })
 
-  describe('sessionIn', function () {
+  describe('sessionPOST', function () {
     it('accepts valid', () => {
-      const { error } = schema.sessionIn.validate({
+      const { error } = schema.sessionPOST.validate({
         username: 'valid',
         password: 'ab12CD#%alph',
       })
@@ -135,14 +131,14 @@ describe('user', function () {
     })
 
     it('rejects missing username', () => {
-      const { error } = schema.sessionIn.validate({
+      const { error } = schema.sessionPOST.validate({
         password: 'ab12CD#%alph',
       })
       assert.strictEqual(error.message, '"username" is required')
     })
 
     it('rejects missing password', () => {
-      const { error } = schema.sessionIn.validate({
+      const { error } = schema.sessionPOST.validate({
         username: 'valid',
       })
       assert.strictEqual(error.message, '"password" is required')
