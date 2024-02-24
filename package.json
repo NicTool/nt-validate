@@ -1,6 +1,6 @@
 {
   "name": "@nictool/validate",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "NicTool Object Validation",
   "main": "index.js",
   "directories": {
@@ -13,9 +13,9 @@
     "lint:fix": "npm run lint --fix",
     "prettier": "npx prettier --ignore-path .gitignore --check .",
     "prettier:fix": "npx prettier --ignore-path .gitignore --write .",
-    "test": "test/run.sh",
+    "test": "node --test",
     "versions": "npx dependency-version-checker check",
-    "watch": "npm run test -- -w"
+    "watch": "node --test --watch"
   },
   "repository": {
     "type": "git",
