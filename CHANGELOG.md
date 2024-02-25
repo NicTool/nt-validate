@@ -2,6 +2,19 @@
 
 ### Unreleased
 
+
+### [0.7.1] - 2024-02-24
+
+- group: parent_id can be zero
+
+### [0.7.0] - 2024-02-24
+
+- session: split to separate file
+- user: sessionPost -> session.POST
+- test: switch file names to \*.test.js
+- group: added GET & POST
+- shared: added meta
+
 ### [0.6.3] - 2024-02-23
 
 - replace mocha with node's test runner
@@ -15,3 +28,5 @@
 - add group & permission
 
 [0.6.3]: https://github.com/NicTool/validate/releases/tag/0.6.3
+[0.7.0]: https://github.com/NicTool/validate/releases/tag/0.7.0
+[0.7.1]: https://github.com/NicTool/validate/releases/tag/0.7.1
