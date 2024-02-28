@@ -2,11 +2,9 @@
 
 ### Unreleased
 
-
 ### [0.7.2] - 2024-02-27
 
 - group: GET returns parent_gid
-
 
 ### [0.7.1] - 2024-02-24
 
