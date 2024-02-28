@@ -3,6 +3,11 @@
 ### Unreleased
 
 
+### [0.7.2] - 2024-02-27
+
+- group: GET returns parent_gid
+
+
 ### [0.7.1] - 2024-02-24
 
 - group: parent_id can be zero
@@ -30,3 +35,4 @@
 [0.6.3]: https://github.com/NicTool/validate/releases/tag/0.6.3
 [0.7.0]: https://github.com/NicTool/validate/releases/tag/0.7.0
 [0.7.1]: https://github.com/NicTool/validate/releases/tag/0.7.1
+[0.7.2]: https://github.com/NicTool/validate/releases/tag/0.7.2

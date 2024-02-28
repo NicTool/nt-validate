@@ -11,4 +11,4 @@ codecov.yml
 .eslintrc.yaml
 .eslintrc.yml
 .eslintrc.json
-.prettier.yml
+.prettierrc.yml
