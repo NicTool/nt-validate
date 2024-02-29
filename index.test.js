@@ -4,20 +4,20 @@ const { describe, it } = require('node:test')
 const schema = require('./index')
 
 describe('index', function () {
-  const testGroup = require('./test/fixtures/v2/group.json')
-  const testUser = require('./test/fixtures/v2/user.json')
-  const testNs = require('./test/fixtures/v2/nameserver.json')
+  const testGroup = require('./lib/test/group.json')
+  const testUser = require('./lib/test/user.json')
+  const testNs = require('./lib/test/nameserver.json')
 
   it('exports user', () => {
     const testCase = JSON.parse(JSON.stringify(testUser))
-    const { error, value } = schema.user.v2.validate(testCase)
+    const { error, value } = schema.user.v3.validate(testCase)
     assert.ifError(error)
     assert.deepEqual(testCase, value)
   })
 
   it('exports group', () => {
     const testCase = JSON.parse(JSON.stringify(testGroup))
-    const { error, value } = schema.group.v2.validate(testCase)
+    const { error, value } = schema.group.v3.validate(testCase)
     assert.ifError(error)
     assert.deepEqual(testCase, value)
   })
