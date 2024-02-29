@@ -5,6 +5,8 @@
 ### [0.7.2] - 2024-02-28
 
 - feat: permission updates
+- feat: add shared.int32 and shared.uint32
+- feat: improvements to zone and zone_record formats
 
 ### [0.7.1] - 2024-02-24
 
