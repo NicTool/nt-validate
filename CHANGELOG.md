@@ -2,11 +2,9 @@
 
 ### Unreleased
 
-
 ### [0.7.2] - 2024-02-28
 
 - feat: permission updates
-
 
 ### [0.7.1] - 2024-02-24
 
