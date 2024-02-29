@@ -2,6 +2,12 @@
 
 ### Unreleased
 
+### [0.7.3] - 2024-02-28
+
+- feat: permission updates
+- feat: add shared.int32 and shared.uint32
+- feat: improvements to zone and zone_record formats
+
 ### [0.7.2] - 2024-02-27
 
 - group: GET returns parent_gid
@@ -34,3 +40,4 @@
 [0.7.0]: https://github.com/NicTool/validate/releases/tag/0.7.0
 [0.7.1]: https://github.com/NicTool/validate/releases/tag/0.7.1
 [0.7.2]: https://github.com/NicTool/validate/releases/tag/0.7.2
+[0.7.3]: https://github.com/NicTool/validate/releases/tag/0.7.3

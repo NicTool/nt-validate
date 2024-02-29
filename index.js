@@ -1,8 +1,9 @@
 for (const l of [
   'group',
-  'user',
-  'session',
   'nameserver',
+  'permission',
+  'session',
+  'user',
   'zone',
   'zone_record',
 ]) {
