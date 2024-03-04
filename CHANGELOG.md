@@ -5,18 +5,10 @@
 
 ### [0.7.4] - 2024-03-04
 
-#### Added
-
-- 
-
-#### Fixed
-
-- 
-
-#### Changed
-
-- 
-- Release v0.7.3 (#10)
+- feat(permission): added POST, GET, DELETE
+- feat(group.GET): allows deleted property
+- feat(session): exports id
+- change(user): remove permission object
 
 ### [0.7.3] - 2024-02-28
 
