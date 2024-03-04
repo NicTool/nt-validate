@@ -1,7 +1,9 @@
 {
+  "id": 2,
   "username": "matt",
   "password": "(t0ps3kREt)",
   "email": "matt@example.com",
   "first_name": "Matt",
-  "last_name": "Simerson"
+  "last_name": "Simerson",
+  "deleted": false
 }

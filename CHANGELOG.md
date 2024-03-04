@@ -2,6 +2,14 @@
 
 ### Unreleased
 
+
+### [0.7.4] - 2024-03-04
+
+- feat(permission): added POST, GET, DELETE
+- feat(group.GET): allows deleted property
+- feat(session): exports id
+- change(user): remove permission object
+
 ### [0.7.3] - 2024-02-28
 
 - feat: permission updates
@@ -41,3 +49,4 @@
 [0.7.1]: https://github.com/NicTool/validate/releases/tag/0.7.1
 [0.7.2]: https://github.com/NicTool/validate/releases/tag/0.7.2
 [0.7.3]: https://github.com/NicTool/validate/releases/tag/0.7.3
+[0.7.4]: https://github.com/NicTool/validate/releases/tag/0.7.4
