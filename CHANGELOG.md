@@ -2,7 +2,6 @@
 
 ### Unreleased
 
-
 ### [0.8.0] - 2024-03-06
 
 - feat(nameserver): added GET_req, GET_res, POST, DELETE
