@@ -3,6 +3,14 @@
 ### Unreleased
 
 
+### [0.8.0] - 2024-03-06
+
+- feat(nameserver): added GET_req, GET_res, POST, DELETE
+- feat(group): separate GET_req, GET_res from GET
+- feat(group): added DELETE
+- feat(shared): added int8, uint8, int16, uint16, int32
+
+
 ### [0.7.4] - 2024-03-04
 
 - feat(permission): added POST, GET, DELETE
@@ -50,3 +58,4 @@
 [0.7.2]: https://github.com/NicTool/validate/releases/tag/0.7.2
 [0.7.3]: https://github.com/NicTool/validate/releases/tag/0.7.3
 [0.7.4]: https://github.com/NicTool/validate/releases/tag/0.7.4
+[0.8.0]: https://github.com/NicTool/validate/releases/tag/0.8.0

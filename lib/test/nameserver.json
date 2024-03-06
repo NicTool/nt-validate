@@ -1,9 +1,18 @@
 {
   "id": 3,
-  "gid": 1,
-  "name": "ns.tld.",
+  "gid": 4096,
+  "name": "a.ns.example.com.",
   "address": "1.2.3.4",
-  "export_type": "djbdns",
+  "address6": "2001:DB8::1",
+  "remote_login": "nsd",
+  "logdir": "/foo",
+  "datadir": "/bar",
+  "export": {
+    "type": "NSD",
+    "interval": 0,
+    "serials": true,
+    "status": "last run:03-05 15:25<br>last cp :09-20 12:59"
+  },
   "ttl": 3600,
   "deleted": false
 }
