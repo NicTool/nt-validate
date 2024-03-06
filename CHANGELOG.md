@@ -6,10 +6,9 @@
 ### [0.8.0] - 2024-03-06
 
 - feat(nameserver): added GET_req, GET_res, POST, DELETE
-- feat(group): separate GET_req, GET_res from GET
-- feat(group): added DELETE
+- feat(group,permission,session,user): separate GET_req, GET_res
+- feat(group,user): added DELETE
 - feat(shared): added int8, uint8, int16, uint16, int32
-
 
 ### [0.7.4] - 2024-03-04
 
