@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### [0.8.1] - 2024-12-16
 
-- dep(eslint): bump to 8.57.1
+- dep(eslint): bump to 9.17.0
 - dep(joi): bump to 17.3.3
 
 ### [0.8.0] - 2024-03-06
