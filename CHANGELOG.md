@@ -1,6 +1,16 @@
+# Changelog
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/).
+
 # CHANGES
 
 ### Unreleased
+
+### [0.8.1] - 2024-12-16
+
+- doc(CONTRIBUTORS): added
+- dep(eslint): bump to 9.17.0
+- dep(joi): bump to 17.3.3
 
 ### [0.8.0] - 2024-03-06
 
@@ -50,6 +60,13 @@
 - feat: import user & group tests from v2
 - add group & permission
 
+[0.1.0]: https://github.com/NicTool/validate/releases/tag/0.1.0
+[0.1.1]: https://github.com/NicTool/validate/releases/tag/0.1.1
+[0.3.0]: https://github.com/NicTool/validate/releases/tag/0.3.0
+[0.4.0]: https://github.com/NicTool/validate/releases/tag/0.4.0
+[0.5.0]: https://github.com/NicTool/validate/releases/tag/0.5.0
+[0.6.0]: https://github.com/NicTool/validate/releases/tag/0.6.0
+[0.6.1]: https://github.com/NicTool/validate/releases/tag/0.6.1
 [0.6.3]: https://github.com/NicTool/validate/releases/tag/0.6.3
 [0.7.0]: https://github.com/NicTool/validate/releases/tag/0.7.0
 [0.7.1]: https://github.com/NicTool/validate/releases/tag/0.7.1
@@ -57,3 +74,4 @@
 [0.7.3]: https://github.com/NicTool/validate/releases/tag/0.7.3
 [0.7.4]: https://github.com/NicTool/validate/releases/tag/0.7.4
 [0.8.0]: https://github.com/NicTool/validate/releases/tag/0.8.0
+[0.8.1]: https://github.com/NicTool/validate/releases/tag/v0.8.1
