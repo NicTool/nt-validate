@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### [0.8.1] - 2024-12-16
 
+- doc(CONTRIBUTORS): added
 - dep(eslint): bump to 9.17.0
 - dep(joi): bump to 17.3.3
 
